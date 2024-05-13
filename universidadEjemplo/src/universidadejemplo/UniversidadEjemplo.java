@@ -48,7 +48,6 @@ public class UniversidadEjemplo {
             if(filasAlumnos > 0) {
                 JOptionPane.showMessageDialog(null,
                         "Alumnos agregados exitosamente");
-                System.out.println(filasAlumnos);
             }
         
             //4. Insertar 4 materias
@@ -66,7 +65,6 @@ public class UniversidadEjemplo {
             if(filasMaterias > 0) {
                 JOptionPane.showMessageDialog(null,
                         "Materias agregadas exitosamente");
-                System.out.println(filasMaterias);
             }
 
             //5. Inscribir a los 3 alumnos en 2 materias cada uno.
@@ -79,6 +77,12 @@ public class UniversidadEjemplo {
                     + " (2,4), "
                     + " (3,3), "
                     + " (3,1) ";
+            PreparedStatement psInscripciones = conexion.prepareStatement(sqlInscripciones);
+            int filasInscripciones = psInscripciones.executeUpdate();
+            if(filasInscripciones > 0){
+                JOptionPane.showMessageDialog(null,
+                        "Inscripciones agregadas exitosamente");
+            }
 
             //6. Listar los datos de los alumnos con calificaciones superiores a 8.
             
@@ -119,13 +123,13 @@ public class UniversidadEjemplo {
                     + " alumno.apellido AS Apellido,"
                     + " alumno.nombre AS Nombre ,"
                     + " alumno.fechaNacimiento AS FechaNacimiento,"
-                    + " alumo.estado AS AlumnoActivo,"
+                    + " alumno.estado AS AlumnoActivo,"
                     + " materia.nombre AS Materia, "
                     + " materia.año AS Año, "
                     + " nota AS Nota "
                     + " FROM inscripcion "
                     + " JOIN alumno ON (inscripcion.idAlumno = alumno.idAlumno) "
-                    + " JOIN materia ON (inscipcion.idMateria = materia.idMateria) "
+                    + " JOIN materia ON (inscripcion.idMateria = materia.idMateria) "
                     + " WHERE nota > 8 ";
             PreparedStatement psNotaMayorOcho = conexion.prepareStatement(
                     sqlNotaMayorOcho);

@@ -1,0 +1,22 @@
+create the database universidad with 3 tables: alumno, inscripcion, materia
+
+alumno
+idAlumno : int
+dni : int UNIQUE
+apellido : varchar(100)
+nombre : varchar (100)
+fechaNacimiento : date
+estado : tinyint
+
+inscripcion
+idInscripto : int
+nota : int
+idAlumno : int
+idMateria : int
+
+materia
+idMateria : int
+nombre : varchar(100)
+año : int
+estado : tinyint
+
