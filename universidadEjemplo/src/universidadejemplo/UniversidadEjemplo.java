@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author adam
+ * @author Adam, Alexis, Enzo, Nico
  */
 public class UniversidadEjemplo {
 
@@ -81,6 +81,39 @@ public class UniversidadEjemplo {
                     + " (3,1) ";
 
             //6. Listar los datos de los alumnos con calificaciones superiores a 8.
+            
+            // Registrar unas notas
+            String sqlRendir1 = " UPDATE inscripcion "
+                    + " SET nota = 9 "
+                    + " WHERE idAlumno = 1 "
+                    + " AND idMateria = 1 ";
+            PreparedStatement psRendir1 = conexion.prepareStatement(sqlRendir1);
+            int filasRendir1 = psRendir1.executeUpdate();
+            if(filasRendir1 == 1) {
+                JOptionPane.showMessageDialog(null, "Nota registrada");
+            }
+            
+            String sqlRendir2 = " UPDATE inscripcion "
+                    + " SET nota = 8 "
+                    + " WHERE idAlumno = 2 "
+                    + " AND idMateria = 2 ";
+            PreparedStatement psRendir2 = conexion.prepareStatement(sqlRendir2);
+            int filasRendir2 = psRendir2.executeUpdate();
+            if(filasRendir2 == 1) {
+                JOptionPane.showMessageDialog(null, "Nota registrada");
+            }
+            
+            String sqlRendir3 = " UPDATE inscripcion "
+                    + " SET nota = 10 "
+                    + " WHERE idAlumno = 3 "
+                    + " AND idMateria = 3 ";
+            PreparedStatement psRendir3 = conexion.prepareStatement(sqlRendir3);
+            int filasRendir3 = psRendir3.executeUpdate();
+            if(filasRendir3 == 1) {
+                JOptionPane.showMessageDialog(null, "Nota registrada");
+            }
+            
+            // Armar el SELECT y mostrar los resultados
             String sqlNotaMayorOcho = "SELECT "
                     + " alumno.dni AS DNI,"
                     + " alumno.apellido AS Apellido,"
